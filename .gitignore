@@ -3,6 +3,11 @@
 .env.local
 .env.*.local
 
+# Firebase service account keys (sensitive credentials)
+*firebase-service-key.json
+*service-key.json
+src/upswell-play-firebase-service-key.json
+
 # Dependencies
 node_modules/
 .claude/

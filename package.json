@@ -1,0 +1,29 @@
+{
+  "name": "upswell-play-curated-content",
+  "version": "1.0.0",
+  "description": "A TypeScript cron job scheduler",
+  "main": "dist/index.js",
+  "scripts": {
+    "start": "ts-node src/index.ts",
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
+    "start:prod": "node dist/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^17.2.1",
+    "node-cron": "^3.0.3",
+    "yelp-fusion": "^3.0.0"
+  },
+  "devDependencies": {
+    "@types/dotenv": "^6.1.1",
+    "@types/node": "^20.11.0",
+    "@types/node-cron": "^3.0.11",
+    "ts-node": "^10.9.2",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.3.3"
+  }
+}

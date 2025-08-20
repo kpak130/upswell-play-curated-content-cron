@@ -18,8 +18,8 @@ if (!admin.apps.length) {
 
 const db = admin.firestore();
 
-export async function executeTask(): Promise<void> {
-  console.log('Executing main task...');
+export async function executeTask(location: string = 'San Francisco, CA'): Promise<void> {
+  console.log(`Executing main task for location: ${location}`);
   
   try {
     const timestamp = new Date().toISOString();
@@ -36,7 +36,7 @@ export async function executeTask(): Promise<void> {
     // Search for businesses
     const searchRequest = {
       term: 'restaurants',
-      location: 'San Francisco, CA',
+      location: location,
       sort_by: 'best_match',
       limit: 20
     };
@@ -46,7 +46,7 @@ export async function executeTask(): Promise<void> {
     
     // Get detailed business information for the first 3 listings
     const businesses = response.jsonBody.businesses;
-    const first3Businesses = businesses.slice(0, 3);
+    const first3Businesses = businesses.slice(0, 5);
     
     console.log('\n=== Getting detailed business information for first 3 listings ===\n');
     
@@ -62,7 +62,7 @@ export async function executeTask(): Promise<void> {
         const firestoreData = {
           ...businessData,
           created_at: admin.firestore.FieldValue.serverTimestamp(),
-          search_location: 'San Francisco, CA',
+          search_location: location,
           search_term: 'restaurants',
           source: 'yelp',
           source_id: businessData.id,

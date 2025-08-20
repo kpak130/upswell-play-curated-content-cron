@@ -5,7 +5,7 @@ console.log('Cron job scheduler started...');
 
 cron.schedule('*/5 * * * *', async () => {
   console.log(`[${new Date().toISOString()}] Running scheduled task...`);
-  await executeTask();
+  await executeTask('San Francisco, CA'); // Default location for cron job
 });
 
 cron.schedule('0 */1 * * *', () => {
